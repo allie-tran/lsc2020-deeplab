@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+python deeplab/train.py \
+    --logtostderr \
+    --optimizer='adam' \
+    --adam_learning_rate=0.0001 \
+    --adam_epsilon=1e-2 \
+    --training_number_of_steps=10000 \
+    --train_split="train" \
+    --model_variant="xception_65" \
+    --atrous_rates=6 \
+    --atrous_rates=12 \
+    --atrous_rates=18 \
+    --output_stride=16 \
+    --initialize_last_layer=True \
+    --decoder_output_stride=4 \
+    --train_crop_size="513,513" \
+    --train_batch_size=4 \
+    --min_resize_value=513 \
+    --max_resize_value=513 \
+    --resize_factor=16 \
+    --dataset="ade20k" \
+    --tf_initial_checkpoint=../../exp/xception/train/model.ckpt-1085 \
+    --train_logdir=../../exp/xception2/train \
+    --dataset_dir=deeplab/datasets/ADE20K/tfrecord
